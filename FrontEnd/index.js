@@ -1,4 +1,4 @@
-// index.js
+
 const filtersContainer = document.querySelector(".filter");
 const galleryContainer = document.querySelector(".gallery");
 let currentCategory = null;
@@ -61,14 +61,14 @@ export async function createGalleryHTML() {
       const projectTagline = document.createElement("figcaption");
       projectTagline.innerText = galleryWorks[i].title;
 
-      // Ajoutez une ligne pour stocker l'ID dans l'élément du projet
+      //stock l'ID dans l'élément du projet
       project.dataset.id = galleryWorks[i].id;
 
-      // Ajoutez un événement de clic pour chaque projet afin de stocker l'ID lorsqu'il est sélectionné
+      //EL clic pour chaque projet afin de stocker l'ID lorsqu'il est select
       project.addEventListener('click', () => {
         selectedId = project.dataset.id;
         console.log('Selected ID:', selectedId);
-        // Vous pouvez également déclencher ici une fonction pour supprimer l'élément si nécessaire
+        
       });
 
       galleryContainer.appendChild(project);

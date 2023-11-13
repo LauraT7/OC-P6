@@ -469,7 +469,7 @@ footer nav ul {
 }
 
 .modal-add.show-modal {
-    display: flex; /* Appliquez display: flex; lorsque la classe show-modal est présente */
+    display: flex; 
 }
 
 .image-present {
@@ -480,4 +480,16 @@ footer nav ul {
 	color: grey;
 	height: 1rem;
 }
+
+.projets-modif {
+	display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.projets-modif p {
+	display: none;
+}
+
 

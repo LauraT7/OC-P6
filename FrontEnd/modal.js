@@ -1,4 +1,5 @@
 import { createGalleryHTML } from './index.js';
+
 const bannere = document.querySelector(".edit-banner");
 const modalMain = document.querySelector(".modal-main");
 const closeBtn = document.querySelector(".close-btn");
@@ -18,11 +19,26 @@ document.addEventListener("DOMContentLoaded", function () {
             element.style.display = 'flex';
             filterElement.style.display = 'none';
         });
+
+        const modifierText = document.querySelector(".projets-modif p");
+        modifierText.style.display = 'block';
+
         if (loginLink) {
-            loginLink.innerHTML = '<a href="#" onclick="logout()">logout</a>';
+            const logoutLink = document.createElement("a");
+            logoutLink.href = "#";
+            logoutLink.textContent = "logout";
+            logoutLink.addEventListener("click", logout);
+            loginLink.innerHTML = "";
+            loginLink.appendChild(logoutLink);
         }
     }
 });
+
+const modifierText = document.querySelector(".projets-modif p");
+showModal(modifierText);
+
+const penIcon = document.querySelector(".projets-modif i");
+showModal(penIcon);
 
 function showModal(element) {
     element.addEventListener('click', function () {
@@ -114,7 +130,7 @@ closeBtns.forEach((closeBtn) => {
 
 const fileInput = document.getElementById("add-file");
 const addFileZone = document.querySelector(".add-file-zone");
-let imageFile = null;  // Variable pour stocker le fichier d'image
+let imageFile = null;
 
 fileInput.addEventListener('change', function () {
     while (addFileZone.firstChild) {
@@ -204,12 +220,14 @@ addForm.addEventListener('submit', function (event) {
 });
 
 window.addEventListener('click', function (event) {
-    // Vérifier si le clic est en dehors de la modalMain
     if (event.target === modalMain) {
-        // Fermer la modalMain
         modalMain.style.display = 'none';
     }
-
 });
 
+function logout() {
+    sessionStorage.removeItem("isLoggedIn");
+    sessionStorage.removeItem("accessToken");
 
+    window.location.reload();
+}
